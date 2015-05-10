@@ -6,8 +6,8 @@ tags:
 - AMD
 ---
 ## AMD&CMD
-* [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD)（Asynchronous Module Definition），代表作requirejs，作者 James Burke；
-* [CMD](https://github.com/cmdjs/specification/blob/master/draft/module.md)（Common Module Definition），代表seajs，作者玉伯。
+* [AMD](https://github.com/amdjs/amdjs-api/wiki/AMD)（Asynchronous Module Definition），代表作 *requirejs*，作者 James Burke；
+* [CMD](https://github.com/cmdjs/specification/blob/master/draft/module.md)（Common Module Definition），代表作 *seajs*，作者玉伯。
 
 ## 依赖解析
 
@@ -55,20 +55,20 @@ define(function(require){
 * requirejs:： 加载，并执行`factory` (预解析)
 
 下面来看第一个例子
-``` javascript
-// a.js
+{% codeblock a.js lang:javascript %}
 define(function (require) {
     console.log('执行了a');
 });
-```
-``` javascript
+{% endcodeblock %}
+
+{% codeblock b.js lang:javascript %}
 // b.js
 define(function (require) {
     console.log('执行了b');
 });
-```
-``` javascript
-// main.js
+{% endcodeblock %}
+
+{% codeblock main.js lang:javascript %}
 define(function (require) {
     var mod;
     if (true) {
@@ -78,7 +78,7 @@ define(function (require) {
         mod = require('./b');
     }
 });
-```
+{% endcodeblock %}
 
 结果:
 seajs的js加载情况：
@@ -95,17 +95,7 @@ requirejs的js加载情况：
 由此可知，seajs和requirejs都一样的分析依赖和加载依赖的js文件，但是requirejs加载完成js文件之后，会执行js模块的`factory`，而seajs是在真正用到该模块的时候才会去执行模块的`factory`。
 
 接着来看下面第二个例子：
-``` javascript
-// main.js
-define(function (require) {
-    console.log('执行了main');
-    require('./a').doSomething();
-    require('./b').doSomething();
-});
-```
-
-``` javascript
-// a.js
+{% codeblock a.js lang:javascript %}
 define(function (require) {
     console.log('执行了a');
     return {
@@ -114,10 +104,9 @@ define(function (require) {
         }
     };
 });
-```
+{% endcodeblock %}
 
-``` javascript
-// b.js
+{% codeblock b.js lang:javascript %}
 define(function (require) {
     console.log('执行了b');
     return {
@@ -126,7 +115,16 @@ define(function (require) {
         }
     };
 });
-```
+{% endcodeblock %}
+
+{% codeblock main.js lang:javascript %}
+define(function (require) {
+    console.log('执行了main');
+    require('./a').doSomething();
+    require('./b').doSomething();
+});
+{% endcodeblock %}
+
 运行结果:
 seajs输出如下: 
 > 执行了main
