@@ -1,4 +1,3 @@
-blog
+oddjohn's blog
 ====
-
-my microblog project
+hexo搭建的个人技术博客。
