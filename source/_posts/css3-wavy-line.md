@@ -59,9 +59,11 @@ tags:
     height: 50px;
 }
 ```
-首先画一个半径为10px的圆(不是用border-radius哦),效果如下：
+首先画一个半径为10px的圆（不是用border-radius哦），效果如下：
 ``` css
 .wavy-line {
+    width: 100%;
+    height: 50px;
     background-image: -webkit-radial-gradient(circle, transparent, transparent 10px, #fff 10px, #fff);
     background-image: -moz-radial-gradient(circle, transparent, transparent 10px, #fff 10px, #fff);
     background-image: radial-gradient(circle, transparent, transparent 10px, #fff 10px, #fff);
@@ -100,6 +102,8 @@ tags:
 现在默认这个圆以外的白色部分是占满整个屏幕的，接着，我们要限定包围圆的区域的大小，此处用`background-size`，效果如下:
 ``` css
 .wavy-line {
+    width: 100%;
+    height: 50px;
     background-image: -webkit-radial-gradient(circle, transparent, transparent 10px, #fff 10px, #fff);
     background-image: -moz-radial-gradient(circle, transparent, transparent 10px, #fff 10px, #fff);
     background-image: radial-gradient(circle, transparent, transparent 10px, #fff 10px, #fff);
@@ -111,7 +115,7 @@ tags:
     <div class="wavy-line step2"></div>
 </div>
 {% endraw %}
-上面代码设置了背景图案的大小是20px*20px，前面设置了半径为10px的圆，这样的背景大小刚好可以包含直径为20px的圆，还预留出2px。
+上面代码设置了背景图案的大小是20px*20px，前面设置了半径为10px的圆，这样的背景大小刚好可以包含直径为20px的圆。
 接下来要改变高度，使得高度刚好适应半个圆：
 ``` css
 .wavy-line {
